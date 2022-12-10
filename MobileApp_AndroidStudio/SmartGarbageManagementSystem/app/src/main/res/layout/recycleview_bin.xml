@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="170dp"
+    android:layout_height="200dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="20dp"
     android:background="@drawable/round_style"
@@ -12,18 +12,37 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp">
+
+                <ImageView
+                    android:id="@+id/image_view2"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp" />
                 <ImageView
                     android:id="@+id/image_view1"
-                    android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
-                    android:layout_height="110dp" />
+                    android:layout_height="110dp"
+                    android:layout_below="@+id/image_view2"/>
                 <TextView
                     android:id="@+id/text_view1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dp"
+                    android:textAlignment="center"
+                    android:layout_centerHorizontal="true"
+                    android:text="ID"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/roboto_bold"
+                    android:layout_below="@+id/image_view1"/>
+
+                <TextView
+                    android:id="@+id/text_view2"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
+                    android:layout_below="@+id/text_view1"
+                    android:text="filling percentage"
                     android:textAlignment="center"
-                    android:text="text"
-                    android:layout_below="@+id/image_view1"/>
+                    android:fontFamily="@font/roboto"
+                    android:textColor="@color/black" />
 
         </RelativeLayout>
 

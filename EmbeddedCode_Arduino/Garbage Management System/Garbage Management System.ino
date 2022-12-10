@@ -23,7 +23,6 @@ int lock = 0;
 
 char path4[] = "/Bins/";
 
-
 //ultrasonic
 const int trigPin = 12;
 const int echoPin = 14;
@@ -70,9 +69,15 @@ void setup() {
   strcat(path2, "/longitude");
   Firebase.set(firebaseData, path2, dblLongitude);
 
+  char path5[] = "/Bins/";
+  strcat(path5, BIN_ID);
+  strcat(path5, "/id");
+  Firebase.set(firebaseData, path5, BIN_ID);
+
   strcat(path4, BIN_ID);
   strcat(path4, "/lock");
   Firebase.set(firebaseData, path4, lock);
+
 
   //ultrasonic
   pinMode(trigPin, OUTPUT);  // Sets the trigPin as an Output
