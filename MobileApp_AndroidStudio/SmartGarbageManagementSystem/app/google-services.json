@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "322875549971",
+    "firebase_url": "https://mylednode-default-rtdb.firebaseio.com",
+    "project_id": "mylednode",
+    "storage_bucket": "mylednode.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322875549971:android:e524439af6a8f06bd652e6",
+        "android_client_info": {
+          "package_name": "com.usj.smartgarbagemanagementsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "322875549971-v4675moubdl1t6j4utnj4rqf68rfk65f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_SeaSSXZr1icn3xoKANmpLqymm5Xkd1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "322875549971-v4675moubdl1t6j4utnj4rqf68rfk65f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
