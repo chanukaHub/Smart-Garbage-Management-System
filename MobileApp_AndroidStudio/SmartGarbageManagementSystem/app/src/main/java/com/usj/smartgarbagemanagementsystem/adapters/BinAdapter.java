@@ -1,11 +1,14 @@
 package com.usj.smartgarbagemanagementsystem.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -15,12 +18,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.usj.smartgarbagemanagementsystem.BinPage;
+import com.usj.smartgarbagemanagementsystem.Home;
 import com.usj.smartgarbagemanagementsystem.R;
 import com.usj.smartgarbagemanagementsystem.model.Bin;
 
+import java.util.List;
+
 public class BinAdapter extends FirebaseRecyclerAdapter<Bin,BinAdapter.myViewHolder> {
 
-
+    private Context context;
+    private List<Bin> binList;
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
      * {@link FirebaseRecyclerOptions} for configuration options.
@@ -29,6 +37,8 @@ public class BinAdapter extends FirebaseRecyclerAdapter<Bin,BinAdapter.myViewHol
      */
     public BinAdapter(@NonNull FirebaseRecyclerOptions<Bin> options) {
         super(options);
+        binList = options.getSnapshots();
+
     }
 
     @Override
@@ -83,11 +93,12 @@ public class BinAdapter extends FirebaseRecyclerAdapter<Bin,BinAdapter.myViewHol
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context = parent.getContext();
         View view =LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_bin,parent,false);
         return new myViewHolder(view);
     }
 
-    class myViewHolder extends RecyclerView.ViewHolder{
+    class myViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView textView1,textView2;
         ImageView imageView1,imageView2;
 
@@ -97,6 +108,20 @@ public class BinAdapter extends FirebaseRecyclerAdapter<Bin,BinAdapter.myViewHol
             textView2 = itemView.findViewById(R.id.text_view2);
             imageView1 = itemView.findViewById(R.id.image_view1);
             imageView2 = itemView.findViewById(R.id.image_view2);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+
+            int p =getAdapterPosition();
+            Bin b =binList.get(p);
+
+            Intent intent = new Intent(context, BinPage.class);
+            intent.putExtra("id",b.id);
+
+            context.startActivity(intent);
         }
     }
 }
