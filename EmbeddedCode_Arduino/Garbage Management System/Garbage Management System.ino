@@ -19,8 +19,6 @@ FirebaseData firebaseData;
 Servo servo;
 bool isSendLastUpdate = false;
 int lock = 0;
-
-
 char path4[] = "/Bins/";
 
 //ultrasonic
@@ -104,12 +102,10 @@ void loop() {
 
 void checkFillingPercentage() {
   double duration = getUltrasonicDuration();
-
   char path3[] = "/Bins/";
   strcat(path3, BIN_ID);
   strcat(path3, "/duration");
   Firebase.set(firebaseData, path3, duration);
-
   if (duration <= 300) {
     lock = 1;
     Serial.println("100% Full Bin is Lock");
@@ -118,12 +114,9 @@ void checkFillingPercentage() {
     lcd.print("100% Full !!!");
     lcd.setCursor(0, 1);
     lcd.print("Bin is Lock");
-
     Firebase.set(firebaseData, path4, lock);
     waitForunlock();
-
   } else {
-
     if (duration > 300 && duration <= 400) {
       Serial.println("90% Full");
       lcd.clear();

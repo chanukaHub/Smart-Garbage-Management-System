@@ -32,7 +32,7 @@ public class BinPage extends AppCompatActivity {
     Bin bin;
     TextView textView1,textView2,textViewId,textViewPercentage,textViewStatus,textViewLatitude,textViewLongitude;
     ImageView imageView1,imageView2;
-    Button locateBtn;
+    Button locateBtn, unlockBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class BinPage extends AppCompatActivity {
         textViewLatitude =findViewById(R.id.text_view_latitude);
         textViewLongitude =findViewById(R.id.text_view_longitude);
         locateBtn =findViewById(R.id.locate_btn);
+        unlockBtn =findViewById(R.id.unlock_btn);
 
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
@@ -110,10 +111,12 @@ public class BinPage extends AppCompatActivity {
                     case 1:
                         textViewStatus.setText("Lock");
                         Glide.with(imageView2.getContext()).load(lock_drawable).into(imageView2);
+                        unlockBtn.setVisibility(View.VISIBLE);
                         break;
                     case 0:
                         textViewStatus.setText("Unlock");
                         Glide.with(imageView2.getContext()).load(unlock_drawable).into(imageView2);
+                        unlockBtn.setVisibility(View.INVISIBLE);
                         break;
 
                 }
@@ -142,6 +145,13 @@ public class BinPage extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
+        unlockBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reference.child("lock").setValue(0);
             }
         });
 
